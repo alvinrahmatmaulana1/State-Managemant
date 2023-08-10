@@ -4,6 +4,7 @@ import ProductsViews from '../views/ProductsViews.vue'
 import login from '../views/LoginView.vue'
 import categori from '../views/CategoriView.vue'
 import singleProduct from '../views/SingleProduct.vue'
+import CategoriDetail from '../views/CategoriDetail.vue'
 
  const routes = [
     {
@@ -36,9 +37,16 @@ import singleProduct from '../views/SingleProduct.vue'
       component: categori
     },
     {
+      path: '/category/:category_nama',
+      name: 'CategoryDetail',
+      component: CategoriDetail,
+      props : true
+    },
+    {
       path: "/product/:id",
       name: "SingleProduct",
       component: singleProduct,
+      props: true
     },
   ];
   const router =  createRouter({

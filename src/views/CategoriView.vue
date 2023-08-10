@@ -5,6 +5,7 @@
 
             <div class="mt-6 grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-4 xl:gap-x-8">
                 <div v-for="category in getKategori" class="group relative">
+                    <router-link :to="/category/ + category" >
                     <div
                         class="aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-md bg-gray-200 lg:aspect-none group-hover:opacity-75 lg:h-80">
                         <img src="https://tailwindui.com/img/ecommerce-images/product-page-01-related-product-01.jpg"
@@ -20,7 +21,7 @@
                                 </a>
                             </h3>
                         </div>
-                    </div>
+                    </div></router-link>
                 </div>
 
 
