@@ -7,9 +7,16 @@
                     <img src="https://flowbite.com/docs/images/logo.svg" class="h-8 mr-3" alt="Flowbite Logo" />
                     <span class="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">Flowbite</span>
                 </a>
-                <div class="flex md:order-2">
+                <div v-if="isAuthenticated" class="flex md:order-2">
+                <button @click="logout" type="button"
+                    class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 text-center mr-3 md:mr-0 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+                    Logout
+                </button>
+            </div>
+
+                <div v-else  class="flex md:order-2" >
                     <router-link to="/login">
-                    <button type="button"
+                    <button  type="button"
                         class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 text-center mr-3 md:mr-0 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Get
                         Login</button>
                     </router-link>
@@ -28,7 +35,7 @@
                     <ul
                         class="flex flex-col font-medium p-4 md:p-0 mt-4 border border-gray-100 rounded-lg bg-gray-50 md:flex-row md:space-x-8 md:mt-0 md:border-0 md:bg-white dark:bg-gray-800 md:dark:bg-gray-900 dark:border-gray-700">
                         <li>
-                            <router-link to="/">
+                            <router-link to="/produk">
                                 <a href="">Home</a>
                             </router-link>
                         </li>
@@ -53,3 +60,15 @@
     </nav>
 
 </div></template>
+<script>
+import { mapActions, mapGetters } from 'vuex';
+
+export default {
+    computed: {
+        ...mapGetters('Auth', ['isAuthenticated']),
+    },
+    methods: {
+        ...mapActions('Auth', ['logout']),
+    },
+};
+</script>

@@ -4,9 +4,8 @@ import ProductsViews from '../views/ProductsViews.vue'
 import login from '../views/LoginView.vue'
 import categori from '../views/CategoriView.vue'
 import singleProduct from '../views/SingleProduct.vue'
-const router = createRouter({
-  history: createWebHistory(import.meta.env.BASE_URL),
-  routes: [
+
+ const routes = [
     {
       path: '/home',
       name: 'home',
@@ -21,14 +20,15 @@ const router = createRouter({
       component: () => import('../views/AboutView.vue')
     },
     {
-      path: '/',
+      path: '/produk',
       name: 'Products',
       component: ProductsViews
     },
     {
       path: '/login',
       name: 'Login',
-      component: login
+      component: login,
+      meta: { requiresGuest: true },
     },
     {
       path: '/categori',
@@ -40,7 +40,13 @@ const router = createRouter({
       name: "SingleProduct",
       component: singleProduct,
     },
-  ]
-})
+  ];
+  const router =  createRouter({
+    history: createWebHistory(import.meta.env.BASE_URL),
+    
+  routes,
+  
+});
+
 
 export default router
